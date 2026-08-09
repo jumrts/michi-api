@@ -1,0 +1,21 @@
+[project]
+name = "michi-api"
+version = "0.1.0"
+description = "Backend API for Michi"
+authors = [
+    {name = "Julia Araujo",email = "juliagabrielly.m.araujo@gmail.com"},
+]
+dependencies = ["fastapi>=0.141.1", "uvicorn[standard]>=0.52.1"]
+requires-python = "==3.12.*"
+readme = "README.md"
+
+
+[tool.pdm]
+distribution = false
+
+
+[tool.pdm.scripts]
+start = "docker compose up --build"
+test = "pytest"
+check = "ruff check ."
+format = "ruff format ."
