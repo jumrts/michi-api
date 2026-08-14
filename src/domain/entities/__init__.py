@@ -1,0 +1,1 @@
+"""Representation of the objects and their behaviors."""
