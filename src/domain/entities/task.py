@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+
 @dataclass
 class Task:
     """
@@ -15,8 +16,9 @@ class Task:
         completed: bool
             Whether the task is completed or not.
     """
+
     title: str
-    due_date: str   
+    due_date: str
     completed: bool
 
     def complete(self) -> None:

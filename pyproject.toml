@@ -15,6 +15,7 @@ distribution = false
 
 
 [tool.pdm.scripts]
+
 start = "docker compose up --build"
 test = "pytest"
 check = "ruff check ."
@@ -22,3 +23,10 @@ format = "ruff format ."
 make_migration = "docker compose exec api pdm run alembic revision --autogenerate -m"
 migrate = "docker compose exec api pdm run alembic upgrade head"
 rollback = "docker compose exec api pdm run alembic downgrade -1"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.3",
+    "pytest>=9.1.1",
+    "mypy>=2.3.0",
+]

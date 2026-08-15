@@ -1,9 +1,11 @@
 """Settings for the API Michi."""
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class AppSettings(BaseSettings):
     """Settings for the API Michi."""
+
     postgres_host: str
     postgres_port: int = 5432
     postgres_name: str
@@ -36,5 +38,6 @@ class AppSettings(BaseSettings):
     @property
     def domain_url(self) -> str:
         return f"http://{self.host}:{self.port}"
+
 
 app_settings = AppSettings()

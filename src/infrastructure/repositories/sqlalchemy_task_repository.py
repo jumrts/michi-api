@@ -1,6 +1,5 @@
 """SQLAlchemy implementation of the Task repository."""
 
-from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.domain.contracts.task_repository import TaskRepository
@@ -35,6 +34,8 @@ class SQLAlchemyTaskRepository(TaskRepository):
 
         self.db.add(model)
         await self.db.commit()
-        await self.db.refresh(model)  
+        await self.db.refresh(model)
 
-        return Task(title=model.title, completed=model.completed, due_date=model.due_date)
+        return Task(
+            title=model.title, completed=model.completed, due_date=model.due_date
+        )

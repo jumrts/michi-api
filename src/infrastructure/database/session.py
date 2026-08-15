@@ -23,9 +23,13 @@ async def check_connection() -> None:
                 return
         except Exception as e:
             if attempt == max_retries - 1:
-                logger.error(f"Falha na conexão com Postgres após {max_retries} tentativas: {e}")
+                logger.error(
+                    f"Falha na conexão com Postgres após {max_retries} tentativas: {e}"
+                )
                 raise
-            logger.warning(f"Tentativa {attempt + 1} falhou, tentando de novo em {retry_delay}s: {e}")
+            logger.warning(
+                f"Tentativa {attempt + 1} falhou, tentando de novo em {retry_delay}s: {e}"
+            )
             await asyncio.sleep(retry_delay)
             retry_delay *= 2
 
