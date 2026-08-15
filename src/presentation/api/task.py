@@ -1,22 +1,22 @@
 """Routes for the Task entity."""
 
+from typing import Annotated
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.application.services.task import TaskService
 from src.infrastructure.database.session import get_db
-from src.infrastructure.repositories.sqlalchemy_task_repository import SQLAlchemyTaskRepository
+from src.infrastructure.repositories.sqlalchemy_task_repository import (
+    SQLAlchemyTaskRepository,
+)
 from src.presentation.api.task import Task
 
 router = APIRouter(prefix="/tasks")
 
 
 @router.post("/task/create", response_model=Task)
-async def create_task(
-    title: str, 
-    user_id: str, 
-    db: AsyncSession = Depends(get_db)
-):
+async def create_task(title: str, user_id: str, db: Annotated[AsyncSession, Depends(get_db)]):
     """
     Create a new task.
 

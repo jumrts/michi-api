@@ -2,12 +2,13 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from src.infrastructure.config.settings import app_settings
 
 app = FastAPI(
     title=app_settings.name,
     version=app_settings.version,
-    description=app_settings.description
+    description=app_settings.description,
 )
 
 app.add_middleware(
@@ -17,4 +18,3 @@ app.add_middleware(
     allow_methods=app_settings.methods,
     allow_headers=app_settings.headers,
 )
-
