@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled sorted 
+ae6ae282205d724634fd7598fa330d1f83200bb1 refs/heads/1-feat-struct-architecture
+d52dce6a3928d6a879f20219be76703c251963cd refs/heads/3-build-ci-cd
+0f3c815b0da1ca01e388673a6795315eadb1744c refs/heads/4-feat-auth
+0f3c815b0da1ca01e388673a6795315eadb1744c refs/heads/main

@@ -5,7 +5,7 @@ description = "Backend API for Michi"
 authors = [
     {name = "Julia Araujo",email = "juliagabrielly.m.araujo@gmail.com"},
 ]
-dependencies = ["fastapi>=0.141.1", "uvicorn[standard]>=0.52.1", "sqlalchemy[asyncio]>=2.0.52", "asyncpg>=0.31.0", "alembic>=1.19.1", "pydantic-settings>=2.15.0", "psycopg2-binary>=2.9.12"]
+dependencies = ["fastapi>=0.141.1", "uvicorn[standard]>=0.52.1", "sqlalchemy[asyncio]>=2.0.52", "asyncpg>=0.31.0", "alembic>=1.19.1", "pydantic-settings>=2.15.0", "passlib[argon2]>=1.7.4", "pyjwt>=2.13.0", "slowapi>=0.1.10", "loguru>=0.7.3", "pydantic[email]>=2.13.4"]
 requires-python = "==3.12.*"
 readme = "README.md"
 
