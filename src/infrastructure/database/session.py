@@ -5,9 +5,9 @@ import asyncio
 from loguru import logger
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
-from src.infrastructure.config.settings import app_settings
+from src.infrastructure.config.settings import database_settings
 
-engine = create_async_engine(app_settings.database_url, echo=True)
+engine = create_async_engine(database_settings.database_url, echo=True)
 async_session_factory = async_sessionmaker(engine, expire_on_commit=False)
 
 

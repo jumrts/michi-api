@@ -8,6 +8,8 @@ from src.infrastructure.database.models.task import TaskModel
 
 
 class SQLAlchemyTaskRepository(TaskRepository):
+    """The SQLAlchemy implementation of the Task repository."""
+
     def __init__(self, db: AsyncSession):
         self.db = db
 
