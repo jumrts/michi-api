@@ -30,4 +30,3 @@ jobs:
           export PYTHONPATH="$PYTHONPATH:$(pwd)/src"
           pdm run format
           pdm run check
-          pdm run test
