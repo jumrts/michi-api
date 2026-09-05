@@ -7,3 +7,7 @@ class NotFoundError(Exception):
 
 class AlreadyExistsError(Exception):
     """Raised when trying to create an entity that already exists."""
+
+
+class InvalidCredentialsError(Exception):
+    """Raised when the credentials are invalid."""
