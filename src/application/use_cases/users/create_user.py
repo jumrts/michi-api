@@ -28,8 +28,7 @@ class CreateUser:
                 The password of the user.
 
         Returns:
-            User
-                The created user.
+
         """
         already_exists = await self._user_repository.get_by_email(email)
 

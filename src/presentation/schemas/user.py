@@ -19,15 +19,3 @@ class CreateUserRequest(BaseModel):
     name: str
     email: EmailStr
     password: str
-
-
-class UserResponse(BaseModel):
-    """
-    The response schema for a user.
-
-    Attributes:
-        name: str
-            The name of the user.
-    """
-
-    name: str
