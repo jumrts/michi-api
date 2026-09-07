@@ -1,13 +1,13 @@
 """The register use case."""
 
-from src.application.dto.auth import AuthOutput
 from src.application.use_cases.users.create_user import CreateUser
 from src.domain.contracts.user_repository import UserRepository
-from src.infrastructure.security.jwt import create_access_token
+from src.domain.entities.user import User
 
 
 class Register:
     def __init__(self, user_repository: UserRepository):
+        """Initialize the service with the repository."""
         self._user_repository = user_repository
 
     async def execute(
@@ -15,16 +15,30 @@ class Register:
         name: str,
         email: str,
         password: str,
-    ) -> AuthOutput:
+    ) -> User:
+        """
+        Register a new user.
+
+        Arguments:
+            name: str
+                The name of the user.
+            email: str
+                The email of the user.
+            password: str
+                The password of the user.
+
+        Returns:
+            User
+                The user that was created.
+        """
         user = await CreateUser(user_repository=self._user_repository).execute(
             name=name,
             email=email,
             password=password,
         )
 
-        token = create_access_token(user.id)
-
-        return AuthOutput(
+        return User(
+            id=str(user.id),
             name=user.name,
-            token=token,
+            email=user.email,
         )

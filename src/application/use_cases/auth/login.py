@@ -1,6 +1,6 @@
 """Login use case."""
 
-from src.application.dto.auth import AuthOutput
+from src.domain.entities.user import User
 from src.domain.exceptions import InvalidCredentialsError
 from src.infrastructure.security.jwt import create_access_token
 from src.infrastructure.security.password import verify_password
@@ -13,7 +13,7 @@ class Login:
         """Initialize the service with the repository."""
         self._user_repository = user_repository
 
-    async def execute(self, email: str, password: str) -> AuthOutput:
+    async def execute(self, email: str, password: str) -> tuple[User, str]:
         """Login a user.
 
         Arguments:
@@ -23,8 +23,8 @@ class Login:
                 The password of the user.
 
         Returns:
-            AuthOutput
-                The output data returned after a successful authentication.
+            tuple[User, str]
+                The user and the token.
         """
 
         user = await self._user_repository.get_by_email(email)
@@ -37,7 +37,8 @@ class Login:
 
         token = create_access_token(user.id)
 
-        return AuthOutput(
+        return User(
+            id=user.id,
             name=user.name,
-            token=token,
-        )
+            email=user.email,
+        ), token
