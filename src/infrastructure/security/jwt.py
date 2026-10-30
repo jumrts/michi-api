@@ -9,9 +9,7 @@ from src.infrastructure.config.settings import auth_settings
 
 def create_access_token(user_id: int) -> str:
     """Create a JWT access token."""
-    expires_at = datetime.now(UTC) + timedelta(
-        seconds=auth_settings.expiration_seconds
-    )
+    expires_at = datetime.now(UTC) + timedelta(seconds=auth_settings.expiration_seconds)
 
     payload = {
         "sub": str(user_id),
@@ -27,10 +25,10 @@ def create_access_token(user_id: int) -> str:
 
 def decode_access_token(token: str) -> int:
     """Decode a JWT access token."""
-    payload = jwt.decode(
-        token,
-        auth_settings.secret_key,
-        algorithms=[auth_settings.algorithm],
-    )
-
-    return int(payload["sub"])
+    try:
+        payload = jwt.decode(
+            token, auth_settings.secret_key, algorithms=[auth_settings.algorithm]
+        )
+        return payload.get("sub")
+    except jwt.PyJWTError:
+        return None

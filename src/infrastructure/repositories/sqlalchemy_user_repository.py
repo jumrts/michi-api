@@ -38,6 +38,8 @@ class SQLAlchemyUserRepository(UserRepository):
         await self.db.refresh(model)
 
         return User(
+            id=model.id,
+            email=model.email,
             name=model.name,
         )
 

@@ -56,6 +56,7 @@ class AuthSettings(BaseSettings):
     expiration_seconds: int = Field(validation_alias="AUTH_EXPIRATION_SECONDS")
     algorithm: str = Field(validation_alias="AUTH_ALGORITHM")
     token_prefix: str = Field(validation_alias="AUTH_TOKEN_PREFIX")
+    cookie_secure: str = Field(validation_alias="AUTH_COOKIE_SECURE")
 
     model_config = SettingsConfigDict(prefix="auth", env_file=".env", extra="ignore")
 

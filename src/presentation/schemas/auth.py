@@ -16,18 +16,3 @@ class LoginRequest(BaseModel):
 
     email: str
     password: str
-
-    
-class AuthResponse(BaseModel):
-    """
-    The response schema for a successful authentication.
-
-    Attributes:
-        name: str
-            The name of the user.
-        token: str
-            The token of the user.
-    """
-
-    name: str
-    token: str
