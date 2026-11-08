@@ -7,6 +7,10 @@ from sqlalchemy import func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.infrastructure.database.base import Base
+from src.infrastructure.database.models.category import CategoryModel
+from src.infrastructure.database.models.debtor import DebtorModel
+from src.infrastructure.database.models.income import IncomeModel
+from src.infrastructure.database.models.settlement import SettlementModel
 
 if TYPE_CHECKING:
     from src.infrastructure.database.models.task import TaskModel
@@ -43,5 +47,21 @@ class UserModel(Base):
     )
 
     tasks: Mapped[list["TaskModel"]] = relationship(
+        back_populates="user",
+    )
+
+    debtors: Mapped[list["DebtorModel"]] = relationship(
+        back_populates="user",
+    )
+
+    incomes: Mapped[list["IncomeModel"]] = relationship(
+        back_populates="user",
+    )
+
+    categories: Mapped[list["CategoryModel"]] = relationship(
+        back_populates="user",
+    )
+
+    settlements: Mapped[list["SettlementModel"]] = relationship(
         back_populates="user",
     )

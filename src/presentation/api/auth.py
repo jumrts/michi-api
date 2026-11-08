@@ -43,12 +43,8 @@ async def register(
         UserResponse
             The user.
     """
-    user = await Register(
-        user_repository=SQLAlchemyUserRepository(db)
-    ).execute(
-        name=data.name, 
-        email=data.email, 
-        password=data.password
+    user = await Register(user_repository=SQLAlchemyUserRepository(db)).execute(
+        name=data.name, email=data.email, password=data.password
     )
 
     return UserResponse(
